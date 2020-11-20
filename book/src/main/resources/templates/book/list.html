@@ -1,0 +1,20 @@
+<body class="book-list">
+    <table>
+        <tr>
+            <th>No</th>
+            <th>도서명</th>
+            <th>저자</th>
+            <th>출판사</th>
+            <th>가격</th>
+        </tr>
+        <tr th:each="book : ${BOOKS}">
+            <td th:text="${bookStat.count}">No</td>
+            <td th:text="*{title}">도서명</td>
+            <td th:text="*{author}">저자</td>
+            <td th:text="*{comp}">출판사</td>
+            <td th:text="*{price}">가격</td>
+        </tr>
+    </table>
+
+
+</body>

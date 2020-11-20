@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul th:object="${BOOK}">
+        <li th:text="*{title}"></li>
+        <li th:text="*{author}"></li>
+        <li th:text="*{comp}"></li>
+    </ul>
+</body>
+</html>
