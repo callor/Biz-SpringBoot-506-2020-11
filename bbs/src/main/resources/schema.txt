@@ -1,0 +1,5 @@
+-- schema.sql : DDL 명령문이 저장된 file
+-- data.sql : DML 명령문이 저장된 file
+-- 이 두개의 파일이 src/main/resources 폴더에 있으면
+-- spring boot에서 JPA 는 프로젝트가 시작될때 두 파일을 읽어서 데이터 초기화를 수행
+SELECT '여기는 schemal.sql';
