@@ -1,12 +1,42 @@
 
 <section class="page center">
-	<ul class="pagination justify-content-center">
-		<li class="page-item"><a href="#" class="page-link">처음</a></li>
-		<li class="page-item"><a href="#" class="page-link">&lt;</a></li>
-		<li class="page-item"><a href="#" class="page-link">1</a></li>
-		<li class="page-item active"><a href="#" class="page-link">2</a></li>
-		<li class="page-item"><a href="#" class="page-link">3</a></li>
-		<li class="page-item"><a href="#" class="page-link">&gt;</a></li>
-		<li class="page-item"><a href="#" class="page-link">끝</a></li>
+	<ul class="pagination justify-content-center"
+		th:with="start=${ T(Math).floor(BOOKS.number / 10) * 10  + 1 },
+				last=(${start + 9 < BOOKS.totalPages ? start + 9 : BOOKS.totalPages})"
+	>
+
+		<li class="page-item">
+			<a th:href="@{/book/list(size=${BOOKS.size},page=1 )}" 
+				aria-label="First" class="page-link">처음</a>
+		
+		</li>
+
+		<li th:class="${BOOKS.first} ? 'page-item disabled' : 'page-item'" >
+			<a th:href="@{/book/list(size=${BOOKS.size},page=${BOOKS.number})}" 
+				aria-label="Previous" class="page-link">&lt;</a>
+		</li>
+		
+		
+		<li th:each="page : ${#numbers.sequence(start,last)}" 
+			th:class="${page == BOOKS.number + 1} ? 'page-item active' : 'page-item' ">
+			<a th:href="@{/book/list(size=${BOOKS.size}, page=${page})}" 
+			class="page-link" th:text="${page}"></a>
+		</li>
+		
+		
+		<li th:class="${BOOKS.last} ? 'page-item disabled' : 'page-item'" >
+			<a th:href="@{/book/list(size=${BOOKS.size},page=${BOOKS.number + 2})}" 
+			aria-label="Next" class="page-link">&gt;</a>
+		</li>
+		
+		
+		<li class="page-item">
+		<a th:href="@{/book/list(size=${BOOKS.size},page=${BOOKS.totalPages})}"
+				aria-label="Last" class="page-link">끝</a>
+		
+		</li>
 	</ul>
 </section>
+
+
+

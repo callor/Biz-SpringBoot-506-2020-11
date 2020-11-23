@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import com.biz.book.domain.BookVO;
 import com.biz.book.pesistence.BookRespository;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service("bookServiceV1")
 public class BookServiceImplV1 implements BookService {
 
@@ -78,7 +81,10 @@ public class BookServiceImplV1 implements BookService {
 		// pagination의 페이지번호를 클릭했을때 데이터를 가져오기 쉽도록 index값을 변화
 		// getPageNumber값을 0부터 시작하도록
 		int page = pageable.getPageNumber() == 0 ? 0 : pageable.getPageNumber() - 1;
-		pageable = PageRequest.of(page, 10);
+		// 몇페이지의 데이터를 몇개 가져올거냐
+		pageable = PageRequest.of(page, 5);
+		
+		log.debug(pageable.toString());
 		
 		return bookDao.findAll(pageable);
 	}
