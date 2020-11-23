@@ -1,6 +1,6 @@
-<html>
+<th:block th:include="header"/>
 <body class="book-list" >
-    <table>
+    <table class="table">
         <tr>
             <th>No</th>
             <th>도서명</th>
@@ -20,5 +20,10 @@
             <td th:text="*{price}">가격</td>
         </tr>
     </table>
+    <th:block th:include="pagination"/>
+    <a href="/book/insert">추가</a>
 </body>
-</html>
+
+
+
+

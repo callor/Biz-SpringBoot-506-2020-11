@@ -1,10 +1,16 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <style>
   * {
     margin: 0;
     padding: 0;
   }
+  
   header.main-header {
-    background-color: green;
+    background-color: green !important;
     color: white;
     text-align: center;
     font-weight: bold;
@@ -29,14 +35,33 @@
     color: blue;
   }
 </style>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+	
+	document.querySelector("nav.main-nav ul").addEventListener("click",function(e){
+		const text = e.target.firstChild.nodeValue // LI tag의 문자열 추출
+		const className = e.target.className;
+		// alert(text + " : " + className)
+		if(text === "Home") {
+			document.location.href = "/"
+		} else if ( className === "nav-book") {
+			document.location.href = "/book/list";
+		} else {
+			alert(text + " : " + className)
+		}
+	})
+})
+
+</script>
+
 <header class="main-header">
   <h2>BOOK 2020</h2>
   <p>나의 도서정보 관리</p>
 </header>
 <nav class="main-nav">
   <ul>
-    <li>Home</li>
-    <li>도서정보</li>
-    <li>자유게시판</li>
+    <li class="nav-home">Home</li>
+    <li class="nav-book">도서정보</li>
+    <li class="nav-bbs">자유게시판</li>
   </ul>
 </nav>
